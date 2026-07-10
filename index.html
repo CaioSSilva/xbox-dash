@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xbox</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-layer" id="main-bg"></div>
+    <div class="bg-overlay"></div>
+
+    <!-- Header -->
+    <div class="top-bar d-flex justify-content-between align-items-start">
+        <div class="d-flex align-items-center">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaKCF6GWZSG3wJxzegHJ7LKtIB3uGmMBf_0uOYKN4qnQ&s=10" class="avatar-img">
+            <div class="ms-3">
+                <div class="d-flex align-items-center">
+                    <span class="user-name">CaioSSilva</span>
+                    <span class="badge-ultimate">ULTIMATE</span>
+                </div>
+                <div class="gamerscore">
+                    <i class="bi bi-hexagon"></i> 11.462
+                </div>
+            </div>
+        </div>
+        <div class="nav-icons d-flex mt-2" id="nav-menu">
+            <i class="bi bi-collection-play nav-item"></i>
+            <i class="bi bi-bag nav-item"></i>
+            <i class="bi bi-xbox nav-item"></i>
+            <i class="bi bi-search nav-item"></i>
+            <i class="bi bi-gear nav-item"></i>
+        </div>
+        <div class="clock mt-2 d-flex align-items-center gap-2">
+            <i class="bi bi-mic"></i> <span>--:--</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        
+        <!-- Game Tiles (Replaced with Picsum safe links) -->
+        <div class="games-row" id="games-list">
+            <!-- Hogwarts -->
+            <div class="game-tile active focused selectable" tabindex="0"
+                 style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS97_-dIMBVSSo-5rI3m2_ZH1i8rk96TkpQqatcGD5yfg&s=10');" 
+                 data-bg="https://variety.com/wp-content/uploads/2022/08/EGS_HogwartsLegacy_AvalancheSoftware_S1_2560x1440-2baf3188eb3c1aa248bcc1af6a927b7e.jpg">
+                <div class="game-info">
+                    <h6>Hogwarts Legacy</h6>
+                    <small>Versão Xbox One</small>
+                </div>
+            </div>
+            <!-- Forza -->
+            <div class="game-tile selectable" tabindex="0"
+                 style="background-image: url('https://cdn.bynogame.com/product/forza-horizon-5-standart-1758463233640.webp');"
+                 data-bg="https://cdn.mos.cms.futurecdn.net/PmyQo7FwgvTf5T3pwEyb9Y.jpg"></div>
+            <!-- GTA VI -->
+            <div class="game-tile selectable" tabindex="0"
+                 style="background-image: url('https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_01_square.07ts01r5ebl3a.jpg');"
+                 data-bg="https://rollingstone.com.br/wp-content/uploads/2025/01/gta-6-grand-theft-auto-foto-divulgacao-rockstar.jpg"></div>
+            <!-- Overwhatch -->
+            <div class="game-tile selectable" tabindex="0"
+                 style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-JC_B8uw2KK_iQmmjQ2pGz4P2anoxhEv7M5F1O1wjFQ&s=10');"
+                 data-bg="https://xboxwire.thesourcemediaassets.com/sites/2/2025/04/Stadium-Key-Art-d3eeb1464fee9ec1bb6a-1900x1080.jpg"></div>
+            <!-- No Man's Sky -->
+            <div class="game-tile selectable" tabindex="0"
+                 style="background-image: url('https://www.nintendo.com/eu/media/images/11_square_images/games_18/nintendo_switch_download_software/SQ_NSwitchDS_NoMansSky_image500w.jpg');"
+                 data-bg="https://store-images.s-microsoft.com/image/apps.56486.68818099466568894.391e0700-449d-4430-a634-7339176aa70e.d4f21bcd-310b-4bde-b82b-236031e51f98"></div>
+            <!-- The Division 2 -->
+            <div class="game-tile selectable" tabindex="0"
+                 style="background-image: url('https://pictures.abebooks.com/isbn/9781838546700-uk.jpg');"
+                 data-bg="https://sm.ign.com/ign_br/screenshot/default/eczfacex4aaczxl_69eg.jpg"></div>
+            
+        </div>
+
+        <!-- Promo Tiles -->
+        <div class="bottom-tiles-row">
+            <!-- Store -->
+            <div class="promo-tile purple-bg selectable d-flex justify-content-center align-items-center flex-column" tabindex="0">
+                <i class="bi bi-bag-check" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+                <div class="promo-text text-start">Loja</div>
+            </div>
+            <!-- Achievement -->
+            <div class="promo-tile selectable" tabindex="0" 
+                 style="background-image: url('https://picsum.photos/seed/achieve/600/300');">
+                <div class="gradient-overlay"></div>
+                <div class="position-absolute" style="top: 15px; right: 15px;">
+                    <i class="bi bi-diagram-3-fill text-success" style="font-size: 1.8rem;"></i>
+                    <span style="position: absolute; right: 5px; top: 12px; font-weight: bold; font-size: 0.7rem;">x3</span>
+                </div>
+                <div class="promo-text">Cérebros da Operação<br><small>Conquista Rara</small></div>
+            </div>
+            <!-- Game Pass -->
+            <div class="promo-tile selectable" tabindex="0" 
+                 style="background-image: url('https://picsum.photos/seed/gamepass/600/300');">
+                <div class="gradient-overlay"></div>
+                <div class="game-pass-badge"><i class="bi bi-xbox" style="color: #107c10;"></i> GAME PASS</div>
+                <div class="promo-text">Jogue Ghost Recon Wildlands<br>agora</div>
+            </div>
+            <!-- More Options -->
+            <div class="promo-tile selectable" tabindex="0" 
+                 style="background-image: url('https://picsum.photos/seed/options/600/300');">
+                <div class="gradient-overlay"></div>
+                <div class="promo-text" style="bottom: 18px;">Stranded Alien Dawn</div>
+                <div class="options-btn"><i class="bi bi-list"></i> Mais opções</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Launch App Overlay -->
+    <div id="launch-overlay">
+        <div class="spinner-border text-success" role="status" style="width: 4rem; height: 4rem;"></div>
+        <h2 id="launch-title" class="mt-4">Iniciando...</h2>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

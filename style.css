@@ -1,0 +1,294 @@
+:root {
+  --xbox-green: #107c10;
+  --xbox-active-blue: #0078d7;
+  --tile-radius: 4px;
+  --focus-outline: 3px solid #fff;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Segoe UI", -apple-system, sans-serif;
+  background-color: #0d0d0d;
+  color: #fff;
+  user-select: none;
+}
+
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center 20%;
+  z-index: 0; /* FIXED: Changed from -2 to 0 */
+  transition: background-image 0.6s ease-in-out;
+  background-image: url("https://i.redd.it/anyone-else-wish-they-would-let-us-keep-these-to-change-the-v0-0imdlkmxpdvc1.jpg?width=1919&format=pjpg&auto=webp&s=8b2992002e137b8537110c608ea42d0775fbb08c");
+}
+
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.2) 40%,
+    rgba(0, 0, 0, 0.95) 95%
+  );
+  z-index: 1; /* FIXED: Changed from -1 to 1 */
+}
+
+.top-bar {
+  padding: 40px 50px;
+  position: relative; /* ADDED: Required for z-index to work */
+  z-index: 2; /* ADDED: Puts header above the background */
+}
+
+.avatar-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.badge-ultimate {
+  background-color: #f2f2f2;
+  color: var(--xbox-green);
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 8px;
+  letter-spacing: 0.5px;
+}
+
+.gamerscore {
+  font-size: 0.85rem;
+  color: #d1d1d1;
+  margin-top: 3px;
+}
+
+.nav-icons {
+  gap: 24px;
+}
+
+.nav-icons i {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s;
+}
+
+.nav-icons i.focused {
+  color: #fff;
+  transform: scale(1.2);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.clock {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.main-container {
+  position: absolute;
+  bottom: 40px;
+  left: 50px;
+  right: 50px;
+  z-index: 2; /* ADDED: Puts game grid above the background */
+}
+
+.games-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 24px;
+  height: 250px;
+}
+
+.game-tile {
+  width: 106px;
+  height: 106px;
+  border-radius: var(--tile-radius);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  outline: 3px solid transparent;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  background-color: #222;
+}
+
+.game-tile.focused:not(.active) {
+  outline: var(--focus-outline);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+.game-tile.active {
+  width: 175px;
+  height: 235px;
+  outline: 3px solid var(--xbox-active-blue);
+  box-shadow: 0 0 25px rgba(0, 120, 215, 0.7);
+  z-index: 10;
+}
+
+.game-tile.active.focused {
+  outline: var(--focus-outline);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 15px rgba(0, 120, 215, 0.8);
+}
+
+.game-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(20, 20, 20, 0.95);
+  padding: 12px 10px;
+  border-bottom-left-radius: var(--tile-radius);
+  border-bottom-right-radius: var(--tile-radius);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.game-tile.active .game-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.game-info h6 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.game-info small {
+  font-size: 0.75rem;
+  color: #bbb;
+}
+
+.bottom-tiles-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.5fr;
+  gap: 16px;
+}
+
+.promo-tile {
+  height: 130px;
+  border-radius: var(--tile-radius);
+  background-size: cover;
+  background-position: center;
+  background-color: #2b2b2b;
+  position: relative;
+  outline: 3px solid transparent;
+  transition: transform 0.2s, outline 0.2s;
+  overflow: hidden;
+}
+
+.promo-tile.focused {
+  outline: var(--focus-outline);
+  transform: scale(1.02);
+  z-index: 5;
+}
+
+.promo-tile.purple-bg {
+  background-color: #554379;
+}
+
+.promo-tile .gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+
+.promo-text {
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  right: 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  z-index: 2;
+}
+
+.promo-text small {
+  font-weight: 400;
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+.game-pass-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #fff;
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
+}
+
+.options-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 3;
+}
+
+/* Launch Overlay Styles */
+#launch-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(13, 13, 13, 0.98);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#launch-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
