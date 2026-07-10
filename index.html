@@ -1,122 +1,370 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Xbox</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="bg-layer" id="main-bg"></div>
+    <video
+      id="bg-video"
+      autoplay
+      loop
+      muted
+      playsinline
+      class="bg-video"
+    ></video>
     <div class="bg-overlay"></div>
 
-    <!-- Header -->
+    <div id="xbox-notification" class="xbox-notification">
+      <div class="notification-icon">
+        <i class="bi bi-xbox"></i>
+      </div>
+      <div class="notification-content">
+        <h6 id="notif-title">Controle Desconectado</h6>
+        <p id="notif-desc">Conecte um controle para jogar!</p>
+      </div>
+    </div>
+
     <div class="top-bar d-flex justify-content-between align-items-start">
-        <div class="d-flex align-items-center">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaKCF6GWZSG3wJxzegHJ7LKtIB3uGmMBf_0uOYKN4qnQ&s=10" class="avatar-img">
-            <div class="ms-3">
-                <div class="d-flex align-items-center">
-                    <span class="user-name">CaioSSilva</span>
-                    <span class="badge-ultimate">ULTIMATE</span>
-                </div>
-                <div class="gamerscore">
-                    <i class="bi bi-hexagon"></i> 11.462
-                </div>
-            </div>
+      <div class="d-flex align-items-center">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaKCF6GWZSG3wJxzegHJ7LKtIB3uGmMBf_0uOYKN4qnQ&s=10"
+          class="avatar-img"
+        />
+        <div class="ms-3">
+          <div class="d-flex align-items-center">
+            <span class="user-name">CaioSSilva</span>
+            <span class="badge-ultimate">ULTIMATE</span>
+          </div>
+          <div class="gamerscore"><i class="bi bi-hexagon"></i> 11.462</div>
         </div>
-        <div class="nav-icons d-flex mt-2" id="nav-menu">
-            <i class="bi bi-collection-play nav-item"></i>
-            <i class="bi bi-bag nav-item"></i>
-            <i class="bi bi-xbox nav-item"></i>
-            <i class="bi bi-search nav-item"></i>
-            <i class="bi bi-gear nav-item"></i>
-        </div>
-        <div class="clock mt-2 d-flex align-items-center gap-2">
-            <i class="bi bi-mic"></i> <span>--:--</span>
-        </div>
+      </div>
+
+      <div class="nav-icons d-flex mt-2 align-items-center" id="nav-menu">
+        <svg
+          class="nav-item focused"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M4 11h16a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z"
+          />
+          <path d="M6 7h12" />
+          <path d="M8 3h8" />
+          <polygon points="10,13.5 15,16.5 10,19.5" />
+        </svg>
+        <svg
+          class="nav-item"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+        <i class="bi bi-xbox nav-item" style="font-size: 1.4rem"></i>
+        <svg
+          class="nav-item"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <svg
+          class="nav-item"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="3" />
+          <path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+          />
+        </svg>
+      </div>
+
+      <div class="clock mt-2 d-flex align-items-center gap-2">
+        <i class="bi bi-mic"></i> <span>--:--</span>
+      </div>
     </div>
 
-    <!-- Main Content -->
     <div class="main-container">
-        
-        <!-- Game Tiles (Replaced with Picsum safe links) -->
-        <div class="games-row" id="games-list">
-            <!-- Hogwarts -->
-            <div class="game-tile active focused selectable" tabindex="0"
-                 style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS97_-dIMBVSSo-5rI3m2_ZH1i8rk96TkpQqatcGD5yfg&s=10');" 
-                 data-bg="https://variety.com/wp-content/uploads/2022/08/EGS_HogwartsLegacy_AvalancheSoftware_S1_2560x1440-2baf3188eb3c1aa248bcc1af6a927b7e.jpg">
-                <div class="game-info">
-                    <h6>Hogwarts Legacy</h6>
-                    <small>Versão Xbox One</small>
-                </div>
-            </div>
-            <!-- Forza -->
-            <div class="game-tile selectable" tabindex="0"
-                 style="background-image: url('https://cdn.bynogame.com/product/forza-horizon-5-standart-1758463233640.webp');"
-                 data-bg="https://cdn.mos.cms.futurecdn.net/PmyQo7FwgvTf5T3pwEyb9Y.jpg"></div>
-            <!-- GTA VI -->
-            <div class="game-tile selectable" tabindex="0"
-                 style="background-image: url('https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_01_square.07ts01r5ebl3a.jpg');"
-                 data-bg="https://rollingstone.com.br/wp-content/uploads/2025/01/gta-6-grand-theft-auto-foto-divulgacao-rockstar.jpg"></div>
-            <!-- Overwhatch -->
-            <div class="game-tile selectable" tabindex="0"
-                 style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-JC_B8uw2KK_iQmmjQ2pGz4P2anoxhEv7M5F1O1wjFQ&s=10');"
-                 data-bg="https://xboxwire.thesourcemediaassets.com/sites/2/2025/04/Stadium-Key-Art-d3eeb1464fee9ec1bb6a-1900x1080.jpg"></div>
-            <!-- No Man's Sky -->
-            <div class="game-tile selectable" tabindex="0"
-                 style="background-image: url('https://www.nintendo.com/eu/media/images/11_square_images/games_18/nintendo_switch_download_software/SQ_NSwitchDS_NoMansSky_image500w.jpg');"
-                 data-bg="https://store-images.s-microsoft.com/image/apps.56486.68818099466568894.391e0700-449d-4430-a634-7339176aa70e.d4f21bcd-310b-4bde-b82b-236031e51f98"></div>
-            <!-- The Division 2 -->
-            <div class="game-tile selectable" tabindex="0"
-                 style="background-image: url('https://pictures.abebooks.com/isbn/9781838546700-uk.jpg');"
-                 data-bg="https://sm.ign.com/ign_br/screenshot/default/eczfacex4aaczxl_69eg.jpg"></div>
-            
+      <div class="games-row" id="games-list">
+        <div
+          class="game-tile active selectable"
+          tabindex="0"
+          style="
+            background-image: url(&quot;https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS97_-dIMBVSSo-5rI3m2_ZH1i8rk96TkpQqatcGD5yfg&s=10&quot;);
+          "
+          data-bg="https://variety.com/wp-content/uploads/2022/08/EGS_HogwartsLegacy_AvalancheSoftware_S1_2560x1440-2baf3188eb3c1aa248bcc1af6a927b7e.jpg"
+          data-url="https://www.xbox.com/games/hogwarts-legacy"
+        >
+          <div class="game-info">
+            <h6 class="txt-game-title" data-game-idx="0">Hogwarts Legacy</h6>
+            <small class="txt-game-version">Versão Xbox One</small>
+          </div>
         </div>
+        <div
+          class="game-tile selectable"
+          tabindex="0"
+          style="
+            background-image: url(&quot;https://cdn.bynogame.com/product/forza-horizon-5-standart-1758463233640.webp&quot;);
+          "
+          data-bg="https://cdn.mos.cms.futurecdn.net/PmyQo7FwgvTf5T3pwEyb9Y.jpg"
+          data-url="https://www.xbox.com/games/forza-horizon-5"
+        ></div>
+        <div
+          class="game-tile selectable"
+          tabindex="0"
+          style="
+            background-image: url(&quot;https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_01_square.07ts01r5ebl3a.jpg&quot;);
+          "
+          data-bg="https://rollingstone.com.br/wp-content/uploads/2025/01/gta-6-grand-theft-auto-foto-divulgacao-rockstar.jpg"
+          data-url="https://www.rockstargames.com/VI"
+        ></div>
+        <div
+          class="game-tile selectable"
+          tabindex="0"
+          style="
+            background-image: url(&quot;https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-JC_B8uw2KK_iQmmjQ2pGz4P2anoxhEv7M5F1O1wjFQ&s=10&quot;);
+          "
+          data-bg="https://xboxwire.thesourcemediaassets.com/sites/2/2025/04/Stadium-Key-Art-d3eeb1464fee9ec1bb6a-1900x1080.jpg"
+          data-url="https://overwatch.blizzard.com/"
+        ></div>
+        <div
+          class="game-tile selectable"
+          tabindex="0"
+          style="
+            background-image: url(&quot;https://www.nintendo.com/eu/media/images/11_square_images/games_18/nintendo_switch_download_software/SQ_NSwitchDS_NoMansSky_image500w.jpg&quot;);
+          "
+          data-bg="https://store-images.s-microsoft.com/image/apps.56486.68818099466568894.391e0700-449d-4430-a634-7339176aa70e.d4f21bcd-310b-4bde-b82b-236031e51f98"
+          data-url="https://www.nomanssky.com/"
+        ></div>
+        <div
+          class="game-tile selectable"
+          tabindex="0"
+          style="
+            background-image: url(&quot;https://image.api.playstation.com/vulcan/ap/rnd/202602/2319/610e0da330e145d2b14a82febaaf8a909470aa0ca6ff0df5.jpg&quot;);
+          "
+          data-bg="https://image.api.playstation.com/vulcan/ap/rnd/202602/2319/10a785e9ca5a21c171cf23ce399adb5937d25f8592ecb457.jpg"
+          data-url="https://www.ubisoft.com/en-us/game/the-division/the-division-2"
+        ></div>
+        <div
+          class="game-tile selectable"
+          tabindex="0"
+          style="
+            background-image: url(&quot;https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png&quot;);
+          "
+          data-bg="https://cdn.wccftech.com/wp-content/uploads/2023/05/Cyberpunk-2077-Path-Tracing-Superpopulation-scaled.jpg"
+          data-url="https://www.cyberpunk.net/"
+        ></div>
+      </div>
 
-        <!-- Promo Tiles -->
-        <div class="bottom-tiles-row">
-            <!-- Store -->
-            <div class="promo-tile purple-bg selectable d-flex justify-content-center align-items-center flex-column" tabindex="0">
-                <i class="bi bi-bag-check" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
-                <div class="promo-text text-start">Loja</div>
-            </div>
-            <!-- Achievement -->
-            <div class="promo-tile selectable" tabindex="0" 
-                 style="background-image: url('https://picsum.photos/seed/achieve/600/300');">
-                <div class="gradient-overlay"></div>
-                <div class="position-absolute" style="top: 15px; right: 15px;">
-                    <i class="bi bi-diagram-3-fill text-success" style="font-size: 1.8rem;"></i>
-                    <span style="position: absolute; right: 5px; top: 12px; font-weight: bold; font-size: 0.7rem;">x3</span>
-                </div>
-                <div class="promo-text">Cérebros da Operação<br><small>Conquista Rara</small></div>
-            </div>
-            <!-- Game Pass -->
-            <div class="promo-tile selectable" tabindex="0" 
-                 style="background-image: url('https://picsum.photos/seed/gamepass/600/300');">
-                <div class="gradient-overlay"></div>
-                <div class="game-pass-badge"><i class="bi bi-xbox" style="color: #107c10;"></i> GAME PASS</div>
-                <div class="promo-text">Jogue Ghost Recon Wildlands<br>agora</div>
-            </div>
-            <!-- More Options -->
-            <div class="promo-tile selectable" tabindex="0" 
-                 style="background-image: url('https://picsum.photos/seed/options/600/300');">
-                <div class="gradient-overlay"></div>
-                <div class="promo-text" style="bottom: 18px;">Stranded Alien Dawn</div>
-                <div class="options-btn"><i class="bi bi-list"></i> Mais opções</div>
-            </div>
+      <div class="bottom-tiles-row">
+        <div
+          class="promo-tile purple-bg selectable d-flex justify-content-center align-items-center flex-column"
+          tabindex="0"
+          data-url="https://www.microsoft.com/store"
+        >
+          <i
+            class="bi bi-bag-check"
+            style="font-size: 2.5rem; margin-bottom: 15px"
+          ></i>
+          <div class="promo-text text-start txt-store-label">Loja</div>
         </div>
+        <div
+          class="promo-tile selectable"
+          tabindex="0"
+          style="
+            background-image: url(&quot;https://picsum.photos/seed/achieve/600/300&quot;);
+          "
+        >
+          <div class="gradient-overlay"></div>
+          <div class="position-absolute" style="top: 15px; right: 15px">
+            <i
+              class="bi bi-diagram-3-fill text-success"
+              style="font-size: 1.8rem"
+            ></i>
+            <span
+              style="
+                position: absolute;
+                right: 5px;
+                top: 12px;
+                font-weight: bold;
+                font-size: 0.7rem;
+              "
+              >x3</span
+            >
+          </div>
+          <div class="promo-text txt-achieve-label">
+            Cérebros da Operação<br /><small>Conquista Rara</small>
+          </div>
+        </div>
+        <div
+          class="promo-tile selectable"
+          tabindex="0"
+          style="
+            background-image: url(&quot;https://picsum.photos/seed/gamepass/600/300&quot;);
+          "
+          data-url="https://www.xbox.com/xbox-game-pass"
+        >
+          <div class="gradient-overlay"></div>
+          <div class="game-pass-badge">
+            <i class="bi bi-xbox" style="color: #107c10"></i> GAME PASS
+          </div>
+          <div class="promo-text txt-gp-label">
+            Jogue Ghost Recon Wildlands<br />agora
+          </div>
+        </div>
+        <div
+          class="promo-tile selectable"
+          tabindex="0"
+          style="
+            background-image: url(&quot;https://picsum.photos/seed/options/600/300&quot;);
+          "
+        >
+          <div class="gradient-overlay"></div>
+          <div class="promo-text txt-options-title" style="bottom: 18px">
+            Stranded Alien Dawn
+          </div>
+          <div class="options-btn txt-options-btn">
+            <i class="bi bi-list"></i> Mais opções
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Launch App Overlay -->
+    <div id="guide-overlay" class="guide-overlay"></div>
+    <div id="xbox-guide" class="xbox-guide">
+      <div
+        class="d-flex align-items-center mb-4 border-bottom border-secondary pb-3"
+      >
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaKCF6GWZSG3wJxzegHJ7LKtIB3uGmMBf_0uOYKN4qnQ&s=10"
+          class="avatar-img"
+          style="width: 50px; height: 50px"
+        />
+        <div class="ms-3">
+          <h5 class="m-0 text-white">CaioSSilva</h5>
+          <small class="text-success txt-status"
+            ><i class="bi bi-circle-fill" style="font-size: 0.5rem"></i>
+            Online</small
+          >
+        </div>
+      </div>
+      <div id="guide-menu-list">
+        <div class="guide-item selectable-guide focused">
+          <i class="bi bi-house-door"></i> <span class="guide-lbl">Início</span>
+        </div>
+        <div class="guide-item selectable-guide">
+          <i class="bi bi-controller"></i>
+          <span class="guide-lbl">Meus jogos e apps</span>
+        </div>
+        <div class="guide-item selectable-guide">
+          <i class="bi bi-people"></i> <span class="guide-lbl">Pessoas</span>
+        </div>
+        <div class="guide-item selectable-guide">
+          <i class="bi bi-chat-dots"></i>
+          <span class="guide-lbl">Grupos e bate-papo</span>
+        </div>
+        <div class="guide-item selectable-guide">
+          <i class="bi bi-trophy"></i> <span class="guide-lbl">Conquistas</span>
+        </div>
+        <div class="guide-item selectable-guide">
+          <i class="bi bi-camera-video"></i>
+          <span class="guide-lbl">Capturar e compartilhar</span>
+        </div>
+        <div class="guide-item selectable-guide">
+          <i class="bi bi-gear"></i>
+          <span class="guide-lbl">Configurações</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="system-modal" class="system-modal">
+      <div class="modal-inner">
+        <div class="modal-header">
+          <i id="modal-icon" class="bi"></i>
+          <h3 id="modal-title">Título</h3>
+        </div>
+        <div id="modal-content" class="modal-body"></div>
+      </div>
+    </div>
+
+    <div id="fake-alert-overlay">
+      <div class="fake-alert-box">
+        <i
+          class="bi bi-info-circle mb-3"
+          style="font-size: 3rem; color: #107c10"
+        ></i>
+        <h3 class="mt-2 text-white txt-alert-header">
+          Tente isso num console real!
+        </h3>
+        <p class="text-secondary mt-2 txt-alert-desc">
+          Esta ação não está disponível na versão web.
+        </p>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <span class="action-btn" id="btn-action-a"
+        ><span class="btn-icon btn-a">A</span>
+        <span class="action-lbl">Selecionar</span></span
+      >
+      <span class="action-btn" id="btn-action-b"
+        ><span class="btn-icon btn-b">B</span>
+        <span class="action-lbl">Voltar</span></span
+      >
+      <span class="action-btn" id="btn-action-menu"
+        ><span class="btn-icon btn-menu"><i class="bi bi-list"></i></span>
+        <span class="action-lbl">Guia</span></span
+      >
+    </div>
+
     <div id="launch-overlay">
-        <div class="spinner-border text-success" role="status" style="width: 4rem; height: 4rem;"></div>
-        <h2 id="launch-title" class="mt-4">Iniciando...</h2>
+      <div
+        class="spinner-border text-success"
+        role="status"
+        style="width: 4rem; height: 4rem"
+      ></div>
+      <h2 id="launch-title" class="mt-4">Iniciando...</h2>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
