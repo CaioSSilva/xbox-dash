@@ -25,9 +25,9 @@ html {
   height: 100%;
   background-size: cover;
   background-position: center 20%;
-  z-index: 0; /* FIXED: Changed from -2 to 0 */
+  z-index: 0;
   transition: background-image 0.6s ease-in-out;
-  background-image: url("https://i.redd.it/anyone-else-wish-they-would-let-us-keep-these-to-change-the-v0-0imdlkmxpdvc1.jpg?width=1919&format=pjpg&auto=webp&s=8b2992002e137b8537110c608ea42d0775fbb08c");
+  background-image: url("https://atorredecontrole.com.br/wp-content/uploads/2022/10/1249649.jpg");
 }
 
 .bg-overlay {
